@@ -1,32 +1,35 @@
-<!--
-<p>create Component works!</p>
--->
+<!-- <p>create Component works!</p>-->
 <div class="container">
-  <h2>Titulo</h2>
-  <form method="post">
+  <h2>{{ title }}</h2>
+  <form #projectForm="ngForm" (ngSubmit)="onSubmit(projectForm)">
     <p>
       <label for="name">Nombre</label>
-      <input type="text" name="name" id="name" >
+      <input type="text" name="name" id="name" #name="ngModel" [(ngModel)]="project.name" required />
     </p>
+
     <p>
       <label for="description">Descripción</label>
-      <textarea name="description" id="description"></textarea>
+      <textarea name="description" id="description" #description="ngModel" [(ngModel)]="project.description" required></textarea>
     </p>
+
     <p>
       <label for="category">Categoría</label>
-      <input type="text" name="category" id="category"/>
+      <input type="text" name="category" id="category" #category="ngModel" [(ngModel)]="project.category" required />
     </p>
+
     <p>
       <label for="year">Año de lanzamiento</label>
-      <input type="number" name="year" id="year"/>
+      <input type="number" name="year" id="year" #year="ngModel" [(ngModel)]="project.year" />
     </p>
+
     <p>
       <label for="languages">Lenguajes utilizados</label>
-      <input type="text" name="langs" id="languages"/>
+      <input type="text" name="languages" id="languages" #languages="ngModel" [(ngModel)]="project.languages" required />
     </p>
+
     <p>
       <label for="image">Imagen del proyecto</label>
-      <input type="file" name="image" placeholder="Subir imagen" id="image"/>
+      <input type="file" name="image" id="image" placeholder="Subir imagen" />
     </p>
 
     <input type="submit" value="Enviar" />

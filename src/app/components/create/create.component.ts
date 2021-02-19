@@ -14,6 +14,7 @@ export class CreateComponent implements OnInit {
   public project: Project;
   public date: Date;
   public year: number;
+  public status: string;
 
   constructor( private _projectService: ProjectService) {
     this.title = 'Create project';
@@ -21,6 +22,7 @@ export class CreateComponent implements OnInit {
     this.year = this.date.getFullYear();
     // Create empty object to fill with form (2-way-databinding)
     this.project = new Project('', '', '', '',  this.year, '', '');
+    this.status = '';
   }
 
   ngOnInit(): void {
@@ -28,5 +30,21 @@ export class CreateComponent implements OnInit {
 
   onSubmit(form: any){
     console.log(this.project);
+
+    // Almacenamos datos del form
+    this._projectService.saveProject(this.project).subscribe(
+        response => {
+          console.log(response);
+          if (response.project){
+            this.status = 'success';
+          }
+          else{
+            this.status = 'failed';
+          }
+        },
+        error => {
+          console.log(error as any);
+        });
+
   }
 }

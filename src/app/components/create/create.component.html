@@ -1,6 +1,15 @@
 <!-- <p>create Component works!</p>-->
 <div class="container">
   <h2>{{ title }}</h2>
+  <!-- Messages create project OK or ERROR -->
+  <div class="message success" *ngIf="status == 'success'">
+    El proyecto se ha creado correctamente, puedes <a href="#">verlo aquí</a>
+  </div>
+
+  <div class="message failed" *ngIf="status == 'failed'">
+    ERROR.El proyecto NO SE HA PODIDO CREAR
+  </div>
+
   <form #projectForm="ngForm" (ngSubmit)="onSubmit(projectForm)">
     <p>
       <label for="name">Nombre</label>

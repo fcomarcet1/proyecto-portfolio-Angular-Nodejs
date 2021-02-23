@@ -37,16 +37,20 @@ export class CreateComponent implements OnInit {
     this._projectService.saveProject(this.project).subscribe(
       response => {
         if (response.project){
-          // Upload image
+          // Upload images
           if (this.filesToUpload) {
-            this._uploadService.makeFileRequest(Global.url+"upload-image/"+response.project._id, [], this.filesToUpload, 'image')              .then((result: any) => {
+            this._uploadService.makeFileRequest(
+              Global.url+"upload-image/"+response.project._id, // Url
+              [],
+              this.filesToUpload, // Files to upload
+              'image' // Name of the field that will receive the backend
+            ).then((result: any) => {
                 console.log(result);
                 this.status = 'success';
                 form.reset();
               });
           }
-        }
-        else {
+        } else {
           this.status = 'failed';
         }
       },
@@ -57,7 +61,8 @@ export class CreateComponent implements OnInit {
   }
 
   fileChangeEvent(fileInput: any){
-    this.filesToUpload = <Array<File>> fileInput.target.files;
+    // get data from target.files in filesToUpload && Cast to array File <Array<File>> .
+    this.filesToUpload = (fileInput.target.files as Array<File>);
   }
 
 }

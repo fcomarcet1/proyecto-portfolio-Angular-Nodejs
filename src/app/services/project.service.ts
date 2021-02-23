@@ -15,15 +15,22 @@ export class ProjectService {
 
   testService(){ return 'Test project service in angular'; }
 
+  /* ************* Save new project***************** */
   saveProject(project: Project): Observable<any> {
-
     // Convert to json
     let params = JSON.stringify(project);
-
-    // Set http header
+    // Set http headers
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
 
     return this._http.post(this.url + 'save-project', params, { headers: headers});
+  }
+
+  /* ************* projects List ***************** */
+  getProjects(): Observable<any> {
+    // Set http headers
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    // Ajax request --> GET
+    return this._http.get(this.url + 'projects', {headers: headers});
   }
 
 }

@@ -18,6 +18,7 @@ export class CreateComponent implements OnInit {
   public year: number;
   public status: string;
   public filesToUpload: Array<File>;
+  public save_project: any;
 
   constructor(private _projectService: ProjectService, private _uploadService: UploadService) {
     this.title = 'Create project';
@@ -27,6 +28,7 @@ export class CreateComponent implements OnInit {
     this.project = new Project('', '', '', '',  this.year, '', '');
     this.status = '';
     this.filesToUpload = [];
+    this.save_project = '';
   }
 
   ngOnInit(): void {
@@ -46,6 +48,7 @@ export class CreateComponent implements OnInit {
               'image' // Name of the field that will receive the backend
             ).then((result: any) => {
                 console.log(result);
+                this.save_project = result.project;
                 this.status = 'success';
                 form.reset();
               });

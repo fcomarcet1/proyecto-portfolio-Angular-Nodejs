@@ -8,12 +8,14 @@ import { CreateComponent } from './components/create/create.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import {ErrorComponent} from './components/error/error.component';
 import {TestComponent} from './components/test/test.component';
+import {DetailComponent} from './components/detail/detail.component';
 
 const routes: Routes = [
   {path: '', component: AboutComponent},
   {path: 'sobre-mi', component: AboutComponent},
   {path: 'proyectos', component: ProjectsComponent},
   {path: 'crear-proyecto', component: CreateComponent},
+  {path: 'proyecto/:id', component: DetailComponent},
   {path: 'contacto', component: ContactComponent},
   {path: 'test', component: TestComponent},
   {path: '**', component: ErrorComponent}

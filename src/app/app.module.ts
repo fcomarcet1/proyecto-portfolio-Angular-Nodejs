@@ -13,6 +13,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { ErrorComponent } from './components/error/error.component';
 import { TestComponent } from './components/test/test.component';
 import { DetailComponent } from './components/detail/detail.component';
+import { EditComponent } from './components/edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { DetailComponent } from './components/detail/detail.component';
     ContactComponent,
     ErrorComponent,
     TestComponent,
-    DetailComponent
+    DetailComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,

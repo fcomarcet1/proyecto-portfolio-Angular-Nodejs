@@ -22,7 +22,7 @@ export class ProjectService {
     // Set http headers
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-    return this._http.post(this.url + 'save-project', params, { headers: headers});
+    return this._http.post(this.url + 'save-project', params, { headers});
   }
 
   /* ************* projects List ***************** */
@@ -30,19 +30,27 @@ export class ProjectService {
     // Set http headers
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     // Ajax request --> GET
-    return this._http.get(this.url + 'projects', {headers: headers});
+    return this._http.get(this.url + 'projects', {headers});
   }
 
   /* ******************* project detail *****************/
   getProject(id: string): Observable<any>{
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this._http.get(this.url + 'project/' + id, {headers: headers});
+    return this._http.get(this.url + 'project/' + id, {headers});
   }
 
   /* **************** Delete Project ************************/
   deleteProject(id: string): Observable<any>{
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this._http.delete(this.url + 'project/' + id, {headers: headers});
+    return this._http.delete(this.url + 'project/' + id, {headers});
+  }
+
+  /* **************** Edit Project ************************/
+  updateProject(project: Project): Observable<any> {
+    let params = JSON.stringify(project);
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+    return this._http.put(this.url + 'project/' + project._id, params, {headers: headers});
   }
 
 }
